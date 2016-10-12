@@ -13,7 +13,7 @@ int main(int argc, char** argv){
 	fscanf(input_file, "%d\n", &number_of_points);
 	//int points[number_of_points][4];
 	for(i=0;i<number_of_points;i++){
-		fscanf(input_file, "(%d,%d,%d)\n", &points[i][0], &points[i][1], &points[i][2]);
+		fscanf(input_file, "%d,%d,%d\n", &points[i][0], &points[i][1], &points[i][2]);
 		points[i][3]=0;
 	}
 	printf("List of points- \n");
