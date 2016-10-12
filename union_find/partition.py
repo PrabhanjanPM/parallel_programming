@@ -43,7 +43,7 @@ with open(argv[1]) as fp:
 		pt = map(abs, map(int, fp.readline().split(',')))
 		points.append(pt)
 
-n = 101
+n = 101 # input coordinate varies from -100 to 100
 mySet = UnionFind(n*n*n)
 for i in range(0, n):
 	for j in range(0, n):
@@ -70,14 +70,6 @@ for p in points:
 		partitions += 1
 		result[i] = visited[x] = partitions
 	i += 1
-'''for i in range(0, n):
-	for j in range(0, n):
-		for k in range(0, n):
-			if [i, j, k] in points:
-				x = mySet.find(i*n*n + j*n + k)
-				print [i, j, k]
-				if count[x] == 0:
-					partitions += 1
-					count[x] += 1'''
+
 for i in range(0, len(result)):
 	print points[i], "->", result[i]
