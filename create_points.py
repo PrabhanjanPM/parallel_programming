@@ -11,9 +11,9 @@ points = open(argv[2], "w")
 points.write(str(number_of_points)+"\n")
 
 for i in range(0,number_of_points):
-    x1 = random.randint(-100, 100)
-    y1 = random.randint(-100, 100)
-    z1 = random.randint(-100, 100)
+    x1 = random.randint(-10, 10)
+    y1 = random.randint(-10, 10)
+    z1 = random.randint(-10, 10)
     points.write(str(x1)+","+str(y1)+","+str(z1)+"\n")
 points.close()
 
