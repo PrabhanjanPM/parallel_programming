@@ -45,20 +45,17 @@ with open(argv[1]) as fp:
 
 n = 101 # input coordinate varies from -100 to 100
 mySet = UnionFind(n*n*n)
-for i in range(0, n):
-	for j in range(0, n):
-		for k in range(0, n):
-			if [i, j, k] not in points:
-				continue
-			try:
-				if [i+1, j, k] in points:
-					mySet.union(i*n*n + j*n + k, (i+1)*n*n + j*n + k)
-				if [i, j+1, k] in points:
-					mySet.union(i*n*n + j*n + k, i*n*n + (j+1)*n + k)
-				if [i, j, k+1] in points:
-					mySet.union(i*n*n + j*n + k, i*n*n + j*n + k+1)
-			except IndexError:
-				pass
+for p in points:
+	try:
+		i, j, k = p
+		if [i+1, j, k] in points:
+			mySet.union(i*n*n + j*n + k, (i+1)*n*n + j*n + k)
+		if [i, j+1, k] in points:
+			mySet.union(i*n*n + j*n + k, i*n*n + (j+1)*n + k)
+		if [i, j, k+1] in points:
+			mySet.union(i*n*n + j*n + k, i*n*n + j*n + k+1)
+	except IndexError:
+		pass
 
 partitions = i = 0
 visited = {}
