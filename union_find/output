@@ -8,3 +8,9 @@ Slow Union- 100000 points
 real	3m20.414s
 user	3m19.204s
 sys	0m0.436s
+
+
+Partition- 100000 points in range [0,20)
+real	1m57.748s
+user	1m56.775s
+sys	0m0.441s

@@ -40,10 +40,10 @@ with open(argv[1]) as fp:
 	n = int(fp.readline())
 	result = [0] * n
 	for i in range(0, n):
-		pt = map(abs, map(int, fp.readline().split(',')))
+		pt = map(int, fp.readline().split(','))
 		points.append(pt)
 
-n = 101 # input coordinate varies from -100 to 100
+n = 20 # input coordinate varies from 0 to 20
 mySet = UnionFind(n*n*n)
 for p in points:
 	try:
@@ -56,7 +56,7 @@ for p in points:
 			mySet.union(i*n*n + j*n + k, i*n*n + j*n + k+1)
 	except IndexError:
 		pass
-
+	
 partitions = i = 0
 visited = {}
 for p in points:
