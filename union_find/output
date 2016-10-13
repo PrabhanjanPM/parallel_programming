@@ -1,0 +1,10 @@
+Slow Find- 100000 points 
+real	0m46.846s
+user	0m46.836s
+sys	0m0.012s
+
+
+Slow Union- 100000 points
+real	3m20.414s
+user	3m19.204s
+sys	0m0.436s
