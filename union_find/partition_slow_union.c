@@ -9,7 +9,7 @@ typedef struct{
 
 void unite(UnionFind first, int p, int q);
 int find(UnionFind first, int p, int q);
-
+int find_root(UnionFind first, int p);
 int main(int argc, char **argv){
 	if(argc!=2){
 		printf("Usage- %s <filename>\n", argv[0]);
@@ -36,6 +36,7 @@ int main(int argc, char **argv){
 		//}
 		//printf("with id- %d\n",*(first.id+i));
 	}
+	printf("\n\n");
 
 	for(i=0;i<n;i++){
 		int j;
@@ -69,13 +70,11 @@ int main(int argc, char **argv){
 		}
 	}
 	for(i=0;i<n;i++){
-		int j;
-		/*printf("Points- ");
-		for(j=0;j<3;j++){
-			printf("%d ", *(first.points+3*i+j));
-		}
-		printf("with id- %d\n",*(first.id+i));
-		*/
+		//int j;
+		//printf("Points- ");
+		//for(j=0;j<3;j++){
+		//	printf("%d ", *(first.points+3*i+j));
+		//}
 		printf("%d\n",*(first.id+i));
 	}
 	
@@ -83,16 +82,17 @@ int main(int argc, char **argv){
 }
 
 int find(UnionFind first, int p, int q){
-	int x=0;
+	/*int x=0;
 	if(*(first.id+p) == *(first.id+q)){
 		x=1;
 	}
-	return x;
-	//Use return (*(first.id+p) == *(first.id+q)); instead ?
+	return x;*/
+	return (find_root(first, p) == find_root(first, q));
 }
 
 void unite(UnionFind first, int p, int q){
-	int idp = *(first.id+p);
+	
+	/*int idp = *(first.id+p);
 	int idq = *(first.id+q);
 	// Sort this out initially itself
 	if(idp<idq){
@@ -105,5 +105,20 @@ void unite(UnionFind first, int p, int q){
 		if(*(first.id+i) == idp){
 			*(first.id+i) = idq;
 		}
+	}*/
+	
+	int i = find_root(first, p);
+	int j = find_root(first, q);
+	if(j<i){
+		*(first.id+i) = j;
 	}
+	else{
+		*(first.id+j) = i;
+	}
+}
+int find_root(UnionFind first, int p){
+	while(p != *(first.id+p)){
+		p = *(first.id+p);
+	}
+	return p;
 }
